@@ -20,7 +20,7 @@ void imprime_pilha_real(nodo **topo);
 int main(){
 	int op = -1;
 	nodo * pilha = NULL, *no = NULL;
-	int conteudo, posicao;
+	int conteudo;
 	
 	while (op != 5){
 		system("cls");
