@@ -16,57 +16,81 @@ void imprimirVetor(long int vet[]);
 void shellSort(long int vet[], int tamanho);
 
 int main() {
-	long int vetOrdenadoCrescente[100000],
-		vetOrdenadoDecrescente[100000],
-		vetDecrescenteCrescente[100000],
-		vetCrescenteDecrescente[100000],
-		vetDesordenado[100000];
+	long int vet[100000];
+	clock_t tempo;
 	
-	// Inicialização dos vetores
-	printf("Vetor ordenado crescentemente sem SHELLSORT\n");
-	criarVetorOrdenadoCrescente(vetOrdenadoCrescente);
-	imprimirVetor(vetOrdenadoCrescente);
-	getch();
-	system("cls");
-	printf("Vetor ordenado crescentemente com SHELLSORT\n");
-	shellSort(vetOrdenadoCrescente, 100000);
-	imprimirVetor(vetOrdenadoCrescente);
-	getch();
-	system("cls");
+	// Criando um vetor totalmente ordenado crescentemente
+	criarVetorOrdenadoCrescente(vet);
 	
-	printf("\nVetor ordenado decrescentemente sem SHELLSORT\n");
-	criarVetorOrdenadoDecrescente(vetOrdenadoDecrescente);
-	imprimirVetor(vetOrdenadoDecrescente);
-	getch();
-	printf("Vetor ordenado decrescentemente com SHELLSORT\n");
-	shellSort(vetOrdenadoDecrescente, 100000);
-	getch();
-	imprimirVetor(vetOrdenadoDecrescente);
-	getch();
+	// Contar o tempo inicial
+	tempo = clock();
 	
-	printf("\nVetor ordenado decrescente/crescente sem SHELLSORT\n");
-	criarVetorDecrescenteCrescente(vetDecrescenteCrescente);
-	imprimirVetor(vetDecrescenteCrescente);
-	printf("Vetor ordenado decrescente/crescente com SHELLSORT\n");
-	shellSort(vetDecrescenteCrescente, 100000);
-	imprimirVetor(vetDecrescenteCrescente);
-	getch();
+	// Ordenar o vetor e calcular o tempo gasto
+	shellSort(vet, 100000);
+	tempo = clock();
 	
-	printf("\nVetor ordenado crescente/decrescente sem SHELLSORT\n");
-	criarVetorCrescenteDecrescente(vetCrescenteDecrescente);
-	imprimirVetor(vetCrescenteDecrescente);
-	printf("Vetor ordenado crescente/decrescente com SHELLSORT\n");
-	shellSort(vetCrescenteDecrescente, 100000);
-	imprimirVetor(vetCrescenteDecrescente);
-	getch();
+	// Imprimir o tempo gasto pela ordenação
+	printf("Tempo gasto para ordenar um vetor ordenado crescentemente: %f s\n\n", (double)tempo/CLOCKS_PER_SEC);
 	
-	printf("\nVetor desordenado sem SHELLSORT\n");
-	criarVetorDesordenado(vetDesordenado);
-	imprimirVetor(vetDesordenado);
-	printf("Vetor desordenado com SHELLSORT\n");
-	shellSort(vetDesordenado, 100000);
-	imprimirVetor(vetDesordenado);
-	getch();
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Criando um vetor totalmente ordenado decrescentemente
+	criarVetorOrdenadoDecrescente(vet);
+	
+	// Contar o tempo inicial
+	tempo = clock();
+	
+	// Ordenar o vetor e calcular o tempo gasto
+	shellSort(vet, 100000);
+	tempo = clock();
+	
+	// Imprimir o tempo gasto pela ordenação
+	printf("Tempo gasto para ordenar um vetor ordenado decrescentemente: %f s\n\n", (double)tempo/CLOCKS_PER_SEC);
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Criando um vetor totalmente ordenado metade crescente metade decrescente
+	criarVetorCrescenteDecrescente(vet);
+	
+	// Contar o tempo inicial
+	tempo = clock();
+	
+	// Ordenar o vetor e calcular o tempo gasto
+	shellSort(vet, 100000);
+	tempo = clock();
+	
+	// Imprimir o tempo gasto pela ordenação
+	printf("Tempo gasto para ordenar um vetor metade crescente metade decrescente: %f s\n\n", (double)tempo/CLOCKS_PER_SEC);
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Criando um vetor totalmente ordenado metade decrescentemente metade crescente
+	criarVetorDecrescenteCrescente(vet);
+	
+	// Contar o tempo inicial
+	tempo = clock();
+	
+	// Ordenar o vetor e calcular o tempo gasto
+	shellSort(vet, 100000);
+	tempo = clock();
+	
+	// Imprimir o tempo gasto pela ordenação
+	printf("Tempo gasto para ordenar um vetor ordenado metade decrescentemente metade crescente: %f s\n\n", (double)tempo/CLOCKS_PER_SEC);
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Criando um vetor totalmente desordenado
+	criarVetorDecrescenteCrescente(vet);
+	
+	// Contar o tempo inicial
+	tempo = clock();
+	
+	// Ordenar o vetor e calcular o tempo gasto
+	shellSort(vet, 100000);
+	tempo = clock();
+	
+	// Imprimir o tempo gasto pela ordenação
+	printf("Tempo gasto para ordenar um vetor desordenado: %f s\n\n", (double)tempo/CLOCKS_PER_SEC);
 	
 	return 0;
 }
@@ -93,8 +117,6 @@ void shellSort(long int vet[], int tamanho) {
 			vet[j + h] = valor;
 		}
 	}
-	
-	printf("\nFoi\n");
 }
 
 // Funções para a inicialização dos vetores
